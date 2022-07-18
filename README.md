@@ -1,7 +1,6 @@
 # playtime
 
-A new Flutter project.
-
+Italian project about personal completed videogames and acting like social
 ## Getting Started
 
 This project is a starting point for a Flutter application.
