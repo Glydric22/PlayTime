@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'example_page.dart';
-import 'main.dart';
 
 class Switcher extends StatefulWidget {
   const Switcher({Key? key}) : super(key: key);
