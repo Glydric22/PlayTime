@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.playtime">
+    package="com.miglio.playtime">
    <application
         android:label="playtime"
         android:name="${applicationName}"

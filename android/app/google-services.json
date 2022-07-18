@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "812971048526",
+    "project_id": "playtime-78672",
+    "storage_bucket": "playtime-78672.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812971048526:android:6abb6d4334103439474d1f",
+        "android_client_info": {
+          "package_name": "com.example.playtime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "812971048526-9tn1j4tm153l1jgf2jb708pkm9f3gpok.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLybjiOOrGmltonViB6is0u59QVnbGPDM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "812971048526-9tn1j4tm153l1jgf2jb708pkm9f3gpok.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "812971048526-8iui9u4g8f507hjuspb89l33merkgpep.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.playtime"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812971048526:android:1c872670ea1cba5e474d1f",
+        "android_client_info": {
+          "package_name": "com.miglio.playtime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "812971048526-9tn1j4tm153l1jgf2jb708pkm9f3gpok.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLybjiOOrGmltonViB6is0u59QVnbGPDM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "812971048526-9tn1j4tm153l1jgf2jb708pkm9f3gpok.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "812971048526-8iui9u4g8f507hjuspb89l33merkgpep.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.playtime"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

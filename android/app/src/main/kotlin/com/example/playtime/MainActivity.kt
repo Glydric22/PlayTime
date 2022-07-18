@@ -1,4 +1,4 @@
-package com.example.playtime
+package com.miglio.playtime
 
 import io.flutter.embedding.android.FlutterActivity
 
