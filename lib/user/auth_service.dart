@@ -17,20 +17,6 @@ class AuthService {
     }
   }
 
-  ///Sign In user
-  static void signIn(String email, String password) {
-    try {
-      FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        const AlertDialog(title: Text('No user found for that email.'));
-      } else if (e.code == 'wrong-password') {
-        const AlertDialog(
-            title: Text('Wrong password provided for that user.'));
-      }
-    }
-  }
 
   ///Sign out user
   static void signOut() async => await FirebaseAuth.instance.signOut();

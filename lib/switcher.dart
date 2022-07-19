@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'example_page.dart';
+import 'user/login.dart';
 
 class Switcher extends StatefulWidget {
   const Switcher({Key? key}) : super(key: key);
@@ -9,9 +10,9 @@ class Switcher extends StatefulWidget {
 }
 
 class SwitcherState extends State<Switcher> {
-  int _index = 0;
+  int _index = 2; //0;
 
-  final _screen = const [ExamplePage(), ExamplePage(), ExamplePage()];
+  final _screen = const [ExamplePage(), ExamplePage(), LoginPage()];
   void _updateIndex(int value) {
     setState(() => _index = value);
   }
