@@ -4,23 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
-  ///Sign In user
-  void signIn(String email, String password) async {
-    try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
-    } on FirebaseAuthException catch (e) {
-      switch (e.code) {
-        case 'user-not-found':
-          const AlertDialog(title: Text('No user found for that email.'));
-          break;
-        case 'wrong-password':
-          const AlertDialog(
-              title: Text('Wrong password provided for that user.'));
-      }
-    }
-  }
-
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -28,8 +11,28 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passowordController = TextEditingController();
+  String _errorName = "";
 
-  signIn() => widget.signIn(_emailController.text, _passowordController.text);
+  ///Sign In user
+  void signIn() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _emailController.text, password: _passowordController.text);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "invalid-email") {
+        setState(() => _errorName = "Inserire un'email corretta");
+      }
+      if (e.code == "user-not-found") {
+        setState(() => _errorName = "L'utente non è stato trovato");
+      }
+      if (e.code == "wrong-password") {
+        setState(() => _errorName = "Password Errata");
+      }
+      
+    } on Exception catch (e) {
+      debugPrint(e.toString());
+    }
+  }
 
   registerPage() {}
 
@@ -60,7 +63,6 @@ class _LoginPageState extends State<LoginPage> {
                     keyboardType: TextInputType.emailAddress,
                     autocorrect: false,
                     decoration: const InputDecoration(
-                      border: UnderlineInputBorder(),
                       label: Text("Email"),
                     ),
                   ),
@@ -70,10 +72,23 @@ class _LoginPageState extends State<LoginPage> {
                     obscureText: true,
                     autocorrect: false,
                     enableSuggestions: false,
-                    decoration: const InputDecoration(
-                        border: UnderlineInputBorder(),
-                        label: Text("Password")),
+                    decoration: const InputDecoration(label: Text("Password")),
                   ), // PasswordField
+
+                  Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: Text(
+                        _errorName,
+                        style: const TextStyle(
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ]),
+                  const Spacer(),
+
                   const Spacer(),
                   ElevatedButton(
                     onPressed: signIn,

@@ -16,17 +16,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Playtime',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        inputDecorationTheme: const InputDecorationTheme(
+          border: UnderlineInputBorder(),
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             minimumSize: const Size(256, 36),
           ),
         ),
         textButtonTheme: TextButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            onPrimary: Colors.grey
+          style: TextButton.styleFrom(
+            primary: Colors.grey,
           ),
         ),
       ),
