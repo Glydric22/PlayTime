@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'register_page.dart';
+import 'user_info_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -16,8 +18,14 @@ class _LoginPageState extends State<LoginPage> {
   ///Sign In user
   void signIn() async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: _emailController.text, password: _passowordController.text);
+      toPage(
+        UserInfoPage(
+          credential: await FirebaseAuth.instance.signInWithEmailAndPassword(
+              email: _emailController.text,
+              password: _passowordController.text),
+        ),
+      );
+      _errorName = "";
     } on FirebaseAuthException catch (e) {
       if (e.code == "invalid-email") {
         setState(() => _errorName = "Inserire un'email corretta");
@@ -28,13 +36,20 @@ class _LoginPageState extends State<LoginPage> {
       if (e.code == "wrong-password") {
         setState(() => _errorName = "Password Errata");
       }
-      
+      if (e.code == "too-many-requests") {
+        setState(() => _errorName = "Troppi tentativi, provare più tardi");
+      }
     } on Exception catch (e) {
       debugPrint(e.toString());
     }
   }
 
-  registerPage() {}
+  toRegisterPage() => toPage(const RegisterPage());
+
+  toPage(Widget page) => Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => page),
+      );
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -95,7 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: const Text("Login"),
                   ),
                   TextButton(
-                    onPressed: registerPage,
+                    onPressed: toRegisterPage,
                     child: const Text("Non sei iscritto? Registrati"),
                   ),
                   const Spacer(),
