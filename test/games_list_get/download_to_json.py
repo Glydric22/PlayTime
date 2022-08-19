@@ -5,7 +5,6 @@ from bs4 import BeautifulSoup
 multiplayerUrl = "https://multiplayer.it{}"
 bigGamesList = []
 
-
 def getMultiplayerURL(URL):
     response = requests.get(URL)
     if response.status_code != 200:
@@ -31,7 +30,6 @@ def getMultiplayerURL(URL):
         if nextUrl != "#":
             getMultiplayerURL(multiplayerUrl.format(nextUrl))
 
-
 def parseGame(rawGame) -> dict:
     game = dict()
 
@@ -53,8 +51,7 @@ def saveJson(fileName, jsonFile):
     f.write(json.dumps(jsonFile))
     f.close()
 
-if __name__ == "__main__":
-    # getMultiplayerURL(multiplayerUrl.format("/giochi/?month=2019_08"))
+def download():
     for year in range(2001, 2023):
         for month in range(1, 13):
             try:
@@ -65,4 +62,8 @@ if __name__ == "__main__":
                 )
             except requests.exceptions.TooManyRedirects:
                 print("la pagina non esiste")
-    saveJson("game.json",bigGamesList)
+
+if __name__ == "__main__":
+    # getMultiplayerURL(multiplayerUrl.format("/giochi/?month=2019_08"))
+    download()
+    saveJson("rawGames.json",bigGamesList)

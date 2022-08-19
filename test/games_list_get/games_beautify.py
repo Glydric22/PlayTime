@@ -14,11 +14,18 @@ def orderBy(jsonFile, order):
 if __name__ == "__main__":
     jsonFile = json.loads(open(path + "games.json", "r").read())
     orderBy(jsonFile, "title")
+    perc = "0"
 
     for i in range(len(jsonFile)):
-        print("progress: {} of {}".format(i, str(len(jsonFile))))
+        newPerc = "{:.0f}".format(i/len(jsonFile)*100)
+
+        if(perc!=newPerc):
+            print("progress: {}%".format(newPerc))
+            perc = newPerc
+
         game = jsonFile[i]
 
+        # trasforma la piattaforma in una lista di piattaforme 
         game["platform"] = [game["platform"]]
 
         # il titolo non viene ricontrollato dopo il primo controllo
@@ -38,4 +45,4 @@ if __name__ == "__main__":
 
         cleanedJson.append(game)
 
-    saveJson(path + "cleanGames.json", cleanedJson)
+    saveJson(path + "games.json", cleanedJson)
